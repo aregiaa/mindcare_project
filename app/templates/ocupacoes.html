@@ -1,0 +1,97 @@
+{% extends 'common/base.html' %}
+{% block title %}Ocupação{% endblock %}
+{% block content %}
+
+<style>
+
+    body::-webkit-scrollbar {
+        width: 8px;
+        
+    }
+
+
+    body::-webkit-scrollbar-thumb {
+        background-color: #1a2a40;
+        border-radius: 10px;
+        border: 3px solid #1a2a40;
+    }
+
+    body,
+    html {
+
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #0e1723;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        overflow-y: auto;
+    }
+
+    .container {
+        background-color: #23395d;
+        padding: 20px;
+        padding-bottom: 100%;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 1250px;
+        min-height: 100vh;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        color: #ffffff;
+        font-weight: bold;
+    }
+
+    .table {
+        background-color: #2a4365;
+        border-radius: 8px;
+        overflow: hidden;
+        width: 1000px;
+    }
+
+    .table th,
+    .table td {
+        color: #e0e6ed;
+        padding: 15px 20px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table th {
+        color: #ffffff;
+        background-color: #3b4e6b;
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #334a67;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #405b7a;
+    }
+</style>
+
+<div class="container">
+    <h2 class="mb-4">Ocupações</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ocupacao in ocupacoes %}
+            <tr>
+                <td>{{ ocupacao.nome }}</td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

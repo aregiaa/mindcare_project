@@ -1,0 +1,34 @@
+{% extends 'common/base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+<style>
+    nav {
+        display: none;
+    }
+</style>
+
+<section>
+        <div class="w-3/6 h-screen bg-[#0D1C26] flex flex-col items-center justify-center">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li class="{{ message.tags }}  bg-red-800 text-white p-1 font-['Ubuntu'] rounded-md mb-3">{{ message }}
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <form action="/login" method="POST" class="w-[100%] flex justify-center">
+                {% csrf_token %}
+                <div class="flex flex-col items-center justify-center space-y-7 w-[80%]">
+                    <input name="username" type="text" placeholder="Usuário"  class="w-[100%] h-12 px-4 bg-[#0D1C26] border-b-[#6B98BF] border-b-[1px] focus:border-b-2 text-[#6B98BF] placeholder-[#6B98BF] focus:outline-none font-['Ubuntu'] font-light">
+                    <input name="password" type="password" placeholder="Senha" class="w-[100%] h-12 px-4 bg-[#0D1C26] border-b-[#6B98BF] border-b-[1px] focus:border-b-2 text-[#6B98BF] placeholder-[#6B98BF] focus:outline-none font-['Ubuntu'] font-light">
+                    <button class="w-3/6 h-12 bg-[#6B98BF] text-[#0D1C26] font-['Teko'] text-lg hover:bg-[#5E88BF] mt-3">ENTRAR </button>
+                    <a href="{% url 'register' %}"  class="text-[#5E88BF]"> Registre-se</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

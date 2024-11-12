@@ -1,0 +1,29 @@
+<nav class="bottom-0 fixed dark:bg-[#0D1C26] w-[100vw]">
+    <div class="flex justify-around items-center h-16 px-4 w-[100%]">
+        <a href="{% url 'instituicoes' %}"
+            class="text-[#6B98BF] font-['Teko'] xl:text-2xl text-lg hover:text-white transition">Instituições</a>
+        <a href="{% url 'agendamentos'%}"
+            class="text-[#6B98BF] font-['Teko'] xl:text-2xl text-lg hover:text-white transition">Agendamentos</a>
+        <a href="{% url 'horarios' %}"
+            class="text-[#6B98BF] font-['Teko'] xl:text-2xl text-lg hover:text-white transition">Horários</a>
+        <a href="{% url 'pacientes' %}"
+            class="text-[#6B98BF] font-['Teko'] xl:text-2xl text-lg hover:text-white transition">Pacientes</a>
+        <a href="{% url 'profissionais' %}"
+            class="text-[#6B98BF] font-['Teko'] xl:text-2xl text-lg hover:text-white transition">Profissionais</a>
+        <a href="{% url 'ocupacoes' %}"
+            class="text-[#6B98BF] font-['Teko'] xl:text-2xl text-lg hover:text-white transition">Ocupações</a>
+        <a href="{% url 'cidades' %}"
+            class="text-[#6B98BF] font-['Teko'] xl:text-2xl text-lg hover:text-white transition">Cidades</a>
+
+    </div>
+    <div class="flex justify-around items-center h-16 px-4 w-[100%]">
+        <a href="{% url 'home' %}" class="text-[#6B98BF] font-['Teko'] xl:text-2xl text-lg hover:text-white transition"><i
+                class="fa-solid fa-house"></i></a>
+        <a href="{% url 'login'%}"
+            class="text-[#6B98BF] font-['Teko'] xl:text-2xl text-lg hover:text-white transition"><i
+                class="fa-solid fa-user"></i></a>
+        <a href="{% url 'agendar_sessao' %}"
+            class="text-[#6B98BF] font-['Teko'] xl:text-2xl text-lg hover:text-white transition"><i
+                class="fa-solid fa-plus"></i></a>
+    </div>
+</nav>

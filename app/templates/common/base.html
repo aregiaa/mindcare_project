@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}MindCare{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.
+    min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Configure para usar a classe 'dark'
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/dcdb42b9a7.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+<body class="dark">
+    <main class="bg-[#1F3140]">
+        {% block content %}
+        
+        {% endblock %}
+    </main>
+    {% include 'common/navbar.html' %}
+</body>
+</html>

@@ -1,0 +1,187 @@
+{% extends 'common/base.html' %}
+{% block title %}Agendar Sessão{% endblock %}
+{% block content %}
+
+<body>
+    
+    <style>
+
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #0e1723;
+            font-family: 'Ubuntu', sans-serif;
+            color: #e0e6ed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            background-color: #23395d;
+            padding: 20px 40px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 600px;
+            min-height: 100vh;
+            box-sizing: border-box;
+            text-align: center;
+            overflow-y: auto;
+        
+        }
+
+        h2 {
+            color: #ffffff;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            color: #e0e6ed;
+            font-weight: bold;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        select,
+        textarea,
+        input[type="text"],
+        input[type="date"],
+        input[type="time"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            background-color: #2a4365;
+            border: 1px solid #6B98BF;
+            border-radius: 4px;
+            color: #e0e6ed;
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        select:focus,
+        textarea:focus,
+        input:focus {
+            border-color: #5E88BF;
+            outline: none;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #6B98BF;
+            color: #0D1C26;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: 'Teko', sans-serif;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #5E88BF;
+        }
+
+        /* NavBar */
+        nav {
+            position: fixed;
+            bottom: 0;
+            width: 100vw;
+            background-color: #0D1C26;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 60px;
+            padding: 0 20px;
+        }
+
+        .nav-link {
+            color: #6B98BF;
+            font-family: 'Teko', sans-serif;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #ffffff;
+        }
+    </style>
+
+    <body>
+
+
+        <div class="container">
+            <h2>Agendar Sessão</h2>
+            <form method="post">
+                {% csrf_token %}
+
+                <label for="profissional">Selecione o Profissional:</label>
+                <select name="profissional" required>
+                    <option value="">Escolha um profissional</option>
+                    {% for profissional in profissionais %}
+                    <option value="{{ profissional.id }}">{{ profissional.nome }} - {{ profissional.ocupacao.nome }}
+                    </option>
+                    {% endfor %}
+                </select>
+
+                <label for="horario">Selecione o Horário e Data:</label>
+                <select name="horario" required>
+                    <option value="">Escolha um horário</option>
+                    {% for horario in horarios %}
+                    <option value="{{ horario.id }}" id="{{ horario.profissional.id }}">
+                        {{ horario.data }} - {{ horario.hora }}
+                    </option>
+                    {% endfor %}
+                </select>
+
+                <label for="instituicao">Selecione a Instituição:</label>
+                <select name="instituicao" required>
+                    <option value="">Escolha uma instituição</option>
+                    {% for instituicao in instituicoes %}
+                    <option value="{{ instituicao.id }}">{{ instituicao.nome }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="observacoes">Observações:</label>
+                <textarea name="observacoes" placeholder="Digite suas observações"></textarea>
+
+                <button type="submit">Agendar Sessão</button>
+            </form>
+        </div>
+
+        <script>
+            function show_profissional_schedule() {
+                var profissional = document.querySelector('select[name="profissional"]');
+                var horarios = document.querySelectorAll('select[name="horario"] option');
+                var horarios_array = Array.from(horarios);
+
+                horarios_array.forEach(function (horario) {
+                    if (horario.id == profissional.value) {
+                        horario.style.display = 'block';
+                    } else {
+                        horario.style.display = 'none';
+                    }
+                });
+            }
+
+            document.querySelector('select[name="profissional"]').addEventListener('change', show_profissional_schedule);
+        </script>
+
+
+
+    </body>
+
+    {% endblock %}

@@ -1,0 +1,174 @@
+{% extends 'common/base.html' %}
+
+{% block title %}Home - MindCare{% endblock %}
+
+{% block content %}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: #0B5394;
+        color: #FFFFFF;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    .container {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    header {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: #FFFFFF;
+        margin-bottom: 20px;
+    }
+
+    .info-section {
+        background-color: #FFFFFF;
+        color: #0B5394;
+        padding: 30px;
+        border-radius: 8px;
+        text-align: center;
+        width: 90%;
+        max-width: 800px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .info-section h2 {
+        margin-bottom: 20px;
+    }
+
+    .info-section ul {
+        list-style-type: disc;
+        padding-left: 20px;
+        text-align: left;
+        margin-top: 10px;
+    }
+
+    .services {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+        margin-bottom: 150px;
+    }
+
+    .service {
+        background-color: #FFFFFF;
+        padding: 20px;
+        border-radius: 10px;
+        width: calc(33.33% - 20px);
+        min-width: 280px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        color: #0B5394;
+    }
+
+    /* Ajustes para telas médias */
+    @media (max-width: 1024px) {
+        .service {
+            width: calc(50% - 20px);
+        }
+    }
+
+    /* Ajustes para telas pequenas */
+    @media (max-width: 768px) {
+        .info-section {
+            width: 100%;
+            padding: 20px;
+        }
+
+        .services {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .service {
+            width: 100%;
+            min-width: unset;
+            margin-bottom: 10px;
+        }
+    }
+
+    footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        width: 100%;
+        background-color: #041E42;
+        color: #FFFFFF;
+    }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <header>mindCare</header>
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+
+        <div class="info-section">
+            <h2>O que é Saúde Mental?</h2>
+            <p>
+                Saúde mental refere-se ao bem-estar emocional, psicológico e social de uma pessoa. Afeta como
+                pensamos, sentimos e agimos. Também ajuda a determinar como lidamos com o estresse, nos relacionamos
+                com os outros e fazemos escolhas.
+            </p>
+            <h2>Dicas para Melhorar sua Saúde Mental</h2>
+            <ul>
+                <li>Pratique atividades físicas regularmente</li>
+                <li>Mantenha uma alimentação equilibrada</li>
+                <li>Durma adequadamente</li>
+                <li>Fale sobre seus sentimentos com amigos e familiares</li>
+                <li>Pratique meditação e relaxamento</li>
+                <li>Procure ajuda profissional quando necessário</li>
+            </ul>
+        </div>
+
+        <div class="services">
+            <div class="service">
+                <h3>Orientação</h3>
+                <p>Oferecemos sessões com orientadores qualificados para ajudar a lidar com seus problemas.</p>
+            </div>
+            <div class="service">
+                <h3>Grupos de Apoio</h3>
+                <p>Grupos de apoio para pessoas que enfrentam dificuldades semelhantes, promovendo um ambiente de troca
+                    e acolhimento.</p>
+            </div>
+            <div class="service">
+                <h3>Consultoria Psicológica</h3>
+                <p>Orientação psicológica para estudantes, trabalhadores e qualquer pessoa que precise de suporte
+                    emocional e mental.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'common/base.html' %}
+{% block title %}Pacientes{% endblock %}
+{% block content %}
+
+<style>
+
+    body::-webkit-scrollbar {
+        width: 8px;
+    }
+
+
+    body::-webkit-scrollbar-thumb {
+        background-color: #1a2a40;
+        border-radius: 10px;
+        border: 3px solid #1a2a40;
+    }
+
+    body,
+    html {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #0e1723;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        overflow-y: auto;
+    }
+
+    .container {
+        background-color: #23395d;
+        padding: 20px;
+        padding-bottom: 100%;
+        border-radius: 8px;
+        width: 100%;
+        max-width: 1250px;
+        min-height: 100vh;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        color: #ffffff;
+        font-weight: bold;
+    }
+
+    .table {
+        background-color: #2a4365;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .table th,
+    .table td {
+        color: #e0e6ed;
+        padding: 15px 20px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .table th {
+        color: #ffffff;
+        background-color: #3b4e6b;
+    }
+
+    .table tr:nth-child(even) {
+        background-color: #334a67;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #405b7a;
+        cursor: pointer;
+    }
+</style>
+
+<div class="container">
+    <h2 class="mb-4">Pacientes</h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Data de Nascimento</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">Endereço</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">País</th>
+                <th scope="col">CEP</th>
+                <th scope="col">Ocupação</th>
+                <th scope="col">Instituição</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paciente in pacientes %}
+            {% if paciente.ocupacao|lower == 'paciente' %}
+            <tr>
+                <td>{{ paciente.nome }}</td>
+                <td>{{ paciente.cpf }}</td>
+                <td>{{ paciente.data_nascimento }}</td>
+                <td>{{ paciente.telefone }}</td>
+                <td>{{ paciente.endereco }}</td>
+                <td>{{ paciente.cidade }}</td>
+                <td>{{ paciente.pais }}</td>
+                <td>{{ paciente.cep }}</td>
+                <td>{{ paciente.ocupacao }}</td>
+                <td>{{ paciente.instituicao }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
